@@ -1,0 +1,22 @@
+<div class="container">
+  <form [formGroup]="personForm">
+    <div class="row">
+      <div class="col-12">
+        <h6>Введите имя</h6>
+        <input type="text" formControlName="firstname" class="form-control" placeholder="Имя" #inputFirstName>
+      </div>
+      <div class="col-12 mt-2">
+        <h6>Введите фамилию</h6>
+        <input type="text" formControlName="lastname" class="form-control" placeholder="Фамилия" #inputLastName>
+      </div>
+      <div class="col-12 mt-2">
+        <h6>Введите номер телефона</h6>
+        <input type="text" [textMask]="{mask: mask}" formControlName="phone" class="form-control" placeholder="Телефон" #inputPhone>
+      </div>
+      <div class="col-12 mt-2 mb-5">
+        <button [disabled]="personForm.invalid" class="btn btn-success" (click)="onAddPerson(inputFirstName, inputLastName, inputPhone)">Сохранить</button>
+      </div>
+    </div>
+  </form>
+</div>
+

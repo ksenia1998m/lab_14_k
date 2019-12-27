@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2 pt-2">{{inPerson.id}}</div>
+    <div class="col-2 pt-2">{{inPerson.firstname}}</div>
+    <div class="col-2 pt-2">{{inPerson.lastname}}</div>
+    <div class="col-2 pt-2">{{inPerson.phone}}</div>
+   
+    <div class="col-md-auto ml-10" style="margin-left: 99px;">
+      <button class="btn btn-primary m-2" (click)="toggle_edit()">Редактировать</button>
+      <button class="btn btn-danger m-2" (click)="onDeletePerson()">Удалить</button>
+    </div>
+    <form [formGroup]="editForm">
+      <div class="row mt-2" *ngIf="edit_flag">
+        <div class="col-4">
+          <input type="text" formControlName="firstname" class="form-control" placeholder="Имя" [(ngModel)]="inPerson.firstname">
+        </div>
+        <div class="col-4">
+          <input type="text" formControlName="lastname" class="form-control" placeholder="Фамилия" [(ngModel)]="inPerson.lastname">
+        </div>
+        <div class="col-2">
+          <input type="text" [textMask]="{mask: mask}" class="form-control" placeholder="Телефон" formControlName="phone" [(ngModel)]="inPerson.phone">
+        </div>
+        <div class="col-2">
+          <button [disabled]="editForm.invalid" class="btn btn-success" (click)="onEditPerson()">Сохранить</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
